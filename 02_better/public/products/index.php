@@ -1,7 +1,6 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=products_crud', 'lemoncube1', 'asdfghjk');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once "../../database.php";
 
 $search = $_GET['search'] ?? '';
 if ($search) {
@@ -16,7 +15,7 @@ $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<?php include_once "views/partials/header.php"; ?>
+<?php include_once "../views/partials/header.php"; ?>
 
 <body>
     <h1>Products CRUD</h1>
