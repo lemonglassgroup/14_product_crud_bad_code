@@ -1,16 +1,8 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+/** @var $pdo \PDO */
 require_once "../../database.php";
 require_once "../../functions.php";
-
-// echo '<pre>';
-// var_dump($_FILES);
-// echo '</pre>';
-// exit;
 
 $errors = [];
 
@@ -24,8 +16,9 @@ $product = [
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     require_once "../../validate_product.php";
-
+   
     if (empty($errors)) {
+
         $statement = $pdo->prepare("INSERT INTO products (title, image, description, price, create_date)
                     VALUES (:title, :image, :description, :price, :date)");
 
@@ -38,22 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: index.php');
     }
 }
-
-
 ?>
 
+<?php include_once "../../views/partials/header.php"; ?>
 
+<h1>Create new Product</h1>
+<p>
+    <a href="index.php" class="btn btn-secondary">Go back to Products</a>
+</p>
 
-
-<?php include_once "views/partials/header.php"; ?>
-
-<body>
-    <h1>Create new Product</h1>
-    <p>
-        <a href="index.php" class="btn btn-secondary">Go back to Products</a>
-    </p>
-
-    <?php include_once "views/products/form.php" ?>
+<?php include_once "../../views/products/form.php"; ?>
 
 </body>
 

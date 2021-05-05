@@ -1,6 +1,7 @@
 <?php
 
-require_once "database.php";
+/** @var $pdo \PDO */
+require_once "../../database.php";
 
 $id = $_POST['id'] ?? null;
 

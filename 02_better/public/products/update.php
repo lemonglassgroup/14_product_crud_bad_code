@@ -1,9 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+/** @var $pdo \PDO */
 require_once "../../database.php";
 require_once "../../functions.php";
 
@@ -30,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once "../../validate_product.php";
 
     if (empty($errors)) {
+
         $statement = $pdo->prepare("UPDATE products SET title = :title, image = :image, description = :description, price = :price WHERE id = :id");
 
         $statement->bindValue(':title', $title);
@@ -41,21 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: index.php');
     }
 }
-
-
 ?>
 
-<?php include_once "views/partials/header.php"; ?>
+<?php include_once "../../views/partials/header.php"; ?>
 
-<body>
+<h1>Edit Product <b><?php echo $product['title'] ?></b></h1>
+<p>
+    <a href="index.php" class="btn btn-secondary">Go back to Products</a>
+</p>
 
-    <p>
-        <a href="index.php" class="btn btn-secondary">Go back to Products</a>
-    </p>
-
-    <h1>Edit Product <b><?php echo $product['title'] ?></b></h1>
-
-<?php include_once "views/products/form.php" ?>
+<?php include_once "../../views/products/form.php"; ?>
 
 </body>
 
