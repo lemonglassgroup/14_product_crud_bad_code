@@ -104,7 +104,6 @@ function randomString($n)
     <link rel="stylesheet" href="app.css">
     <title>Update Product</title>
 </head>
-
 <body>
 
     <p>
