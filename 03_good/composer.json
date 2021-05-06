@@ -1,0 +1,15 @@
+{
+    "name": "lemoncube1/03_good",
+    "authors": [
+        {
+            "name": "lemoncube1",
+            "email": "lemonglasgroup@protonmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    }
+}
